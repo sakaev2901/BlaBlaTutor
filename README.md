@@ -26,5 +26,5 @@
 ### Ссылки
 
   - [Спецификация](https://docs.google.com/document/d/1Q6FlG6cBMR1vPckqB5cGAN6Q7p3k7JhCfcMQFYZD5DM/edit?usp=sharing)
-
+  - [Trello](https://trello.com/b/QV43QGBB)
 
