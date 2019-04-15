@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/niyazm524/blablatutor/badge)](https://www.codefactor.io/repository/github/niyazm524/blablatutor)
+
 # BlaBlaTutor
 
 Систематизация встреч по групповой подготовке конкретных тем к контрольным работам и сессии
