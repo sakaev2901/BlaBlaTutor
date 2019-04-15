@@ -17,6 +17,7 @@
 | Эльдар            	| Frontend             	|
 | Талия             	| Frontend             	|
 | Аделия            	| Design + Frontend    	|
+| Эмиль             	| БД + QA              	|
 | Настя             	| QA                   	|
 
 
