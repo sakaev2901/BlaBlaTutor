@@ -4,12 +4,12 @@ const jwt = require('jsonwebtoken');
 
 const { Schema } = mongoose;
 
-const UsersSchema = new Schema({
+const UserSchema = new Schema({
     username: String,
     password: String
 });
 
-UsersSchema.methods.generateJWT = function() {
+UserSchema.methods.generateJWT = function() {
     const today = new Date();
     const expirationDate = new Date(today);
     expirationDate.setDate(today.getDate() + 60);
@@ -18,10 +18,10 @@ UsersSchema.methods.generateJWT = function() {
         username: this.username,
         id: this._id,
         exp: Math.round(expirationDate.getTime() / 1000),
-    }, 'secret');
+    }, process.env['SECRET_CODE'] || '404 project');
 };
 
-UsersSchema.methods.toAuthJSON = function() {
+UserSchema.methods.toAuthJSON = function() {
     return {
         _id: this._id,
         username: this.username,
@@ -29,4 +29,4 @@ UsersSchema.methods.toAuthJSON = function() {
     };
 };
 
-module.exports = mongoose.model('Users', UsersSchema);
+module.exports = mongoose.model('Users', UserSchema);

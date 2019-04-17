@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('express-jwt');
 const users = require('./users');
 const login = require('./login');
 
