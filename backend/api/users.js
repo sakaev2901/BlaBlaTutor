@@ -1,12 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const UsersController = require('./controllers/users');
+const UserModel = require('../models/UserModel');
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
-  UsersController.create(req.body.username, req.body.password)
-      .then((user) => res.send({user}))
+  UserModel.create({username: req.body.username, password: req.body.password})
+      .then((user) => {
+          user.save().then(() => {
+              res.send({user});
+          })
+
+      })
       .catch((err) => res.status(500).send({err}))
 });
 

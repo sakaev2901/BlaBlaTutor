@@ -4,6 +4,7 @@ const ExtractJWT = passportJWT.ExtractJwt;
 const LocalStrategy = require('passport-local').Strategy;
 const JWTStrategy   = passportJWT.Strategy;
 const UserModel = require('../models/UserModel');
+const config = require('../config');
 
 passport.use(new LocalStrategy({
         usernameField: 'username',
@@ -11,9 +12,9 @@ passport.use(new LocalStrategy({
     },
     function (username, password, cb) {
 
-        return UserModel.findOne({username, password})
+        return UserModel.findOne({username})
             .then(user => {
-                if (!user) {
+                if (!user || !user.validatePassword(password)) {
                     return cb(null, false, {message: 'Incorrect username or password.'});
                 }
 
@@ -29,7 +30,7 @@ passport.use(new LocalStrategy({
 
 passport.use(new JWTStrategy({
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-        secretOrKey   : process.env['SECRET_CODE'] || '404 project'
+        secretOrKey   : config.secretCode
     },
     function (jwtPayload, cb) {
 
