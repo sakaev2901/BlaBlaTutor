@@ -1,0 +1,38 @@
+<template>
+  <v-layout align-center justify-center column>
+    <v-flex xs12 sm4 md3>
+      <div>
+        <v-layout column justify-center>
+          <logo></logo>
+          <span class="text-xs-center">
+            <p>Краткое описание проекта</p>
+          </span>
+        </v-layout>
+
+      </div>
+    </v-flex>
+    <img src="../assets/perfect.jpg">
+    <v-flex xs12 sm4 md3>
+      <div>
+        <v-layout column justify-center>
+          <v-btn color="#63d3f8" dark round>Войти</v-btn>
+          <v-btn color="#63d3f8" dark round>Зарегистрироваться</v-btn>
+        </v-layout>
+
+      </div>
+    </v-flex>
+  </v-layout>
+
+</template>
+
+<script>
+    import Logo from "@/components/Logo";
+    export default {
+        name: "WelcomePage",
+      components: {Logo}
+    }
+</script>
+
+<style scoped>
+
+</style>
