@@ -5,7 +5,7 @@
 Систематизация встреч по групповой подготовке конкретных тем к контрольным работам и сессии
 
   - Frontend: JavaScript, [Vue](https://vuejs.org), [Vuetify](https://vuetifyjs.com)
-  - Backend: Node.js, [Express.js](https://expressjs.com/ru), [Caminte](http://www.camintejs.com)
+  - Backend: Node.js, [Express.js](https://expressjs.com/ru), [Mongoose](https://mongoosejs.com) (MongoDB)
 
 ### Состав команды
 
