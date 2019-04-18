@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
-const { Schema } = mongoose;
+const {Schema} = mongoose;
 
 const UserSchema = new Schema({
     username: {type: String, required: true, unique: true},
@@ -14,13 +14,13 @@ function hash(password, callback) {
     crypto.pbkdf2(password, config.salt, 1000, 20, 'sha512', callback)
 }
 
-UserSchema.methods.validatePassword = function(password) {
+UserSchema.methods.validatePassword = function (password) {
     const hash = crypto.pbkdf2Sync(password, config.salt, 1000, 20, 'sha512').toString('hex');
     return this.password === hash;
 };
 
 
-UserSchema.methods.generateJWT = function() {
+UserSchema.methods.generateJWT = function () {
     const today = new Date();
     const expirationDate = new Date(today);
     expirationDate.setDate(today.getDate() + 60);
@@ -32,7 +32,7 @@ UserSchema.methods.generateJWT = function() {
     }, config.secretCode);
 };
 
-UserSchema.methods.toAuthJSON = function() {
+UserSchema.methods.toAuthJSON = function () {
     return {
         _id: this._id,
         username: this.username,
@@ -40,14 +40,18 @@ UserSchema.methods.toAuthJSON = function() {
     };
 };
 
-UserSchema.pre('save', function(next) {
+UserSchema.methods.getSafeData = function () {
+    return {_id: this._id, username: this.username}
+};
+
+UserSchema.pre('save', function (next) {
     const user = this;
 
     // only hash the password if it has been modified (or is new)
     if (!user.isModified('password')) return next();
 
     // hash the password using our new salt
-    hash(user.password, function(err, hash) {
+    hash(user.password, function (err, hash) {
         if (err) return next(err);
 
         user.password = hash.toString('hex');

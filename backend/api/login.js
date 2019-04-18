@@ -1,14 +1,14 @@
 const router = require('express').Router();
-const jwt      = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const passport = require('passport');
 
-router.post('/', function (req, res, next) {
+router.post('/', function (req, res, next) {  // login and get token
 
     passport.authenticate('local', {session: false}, (err, user, info) => {
         if (err || !user) {
             return res.status(400).json({
                 message: info ? info.message : 'Login failed',
-                user   : user
+                user: user
             });
         }
 
