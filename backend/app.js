@@ -19,7 +19,7 @@ require('./passport');
 
 app.use('/api', api);
 
-app.use(function (err, req, res, next) {
+app.use(function (err, req, res) {
     if(config.logging.logErrors) {
         console.error(err);
     }

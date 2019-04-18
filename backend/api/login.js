@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const jwt = require('jsonwebtoken');
 const passport = require('passport');
 
 router.post('/', function (req, res, next) {  // login and get token
@@ -21,8 +20,7 @@ router.post('/', function (req, res, next) {  // login and get token
 
             return res.json({user, token});
         });
-    })
-    (req, res, next);
+    })(req, res, next);
 
 });
 
