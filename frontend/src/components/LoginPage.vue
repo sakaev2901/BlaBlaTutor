@@ -9,7 +9,7 @@
               <v-spacer></v-spacer>
               <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
-                  <v-btn :href="source" icon large target="_blank" v-on="on">
+                  <v-btn icon large target="_blank" v-on="on">
                     <v-icon large>code</v-icon>
                   </v-btn>
                 </template>

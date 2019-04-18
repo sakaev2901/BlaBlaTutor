@@ -6,7 +6,7 @@
           <v-layout column justify-center>
             <logo></logo>
             <span class="text-xs-center">
-            <p>Краткое описание проекта</p>
+            <span>Краткое описание проекта</span>
           </span>
           </v-layout>
 
